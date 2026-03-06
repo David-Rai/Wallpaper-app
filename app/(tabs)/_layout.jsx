@@ -6,26 +6,37 @@ import { Tabs } from "expo-router";
 
 export default function _layout() {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "#ccc",
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
           title: "For you",
-          tabBarIcon: () => <FontAwesome name="home" size={30} />,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="home" size={30} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="explore/index"
         options={{
           title: "Explore",
-          tabBarIcon: () => <FontAwesome name="search" size={30} />,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="search" size={30} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="account/index"
         options={{
           title: "Account",
-          tabBarIcon: () => <FontAwesome name="user" size={30} />,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="user" size={30} color={color} />
+          ),
         }}
       />
     </Tabs>
