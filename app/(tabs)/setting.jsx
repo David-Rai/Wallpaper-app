@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Nature() {
+export default function setting() {
   return (
     <View>
-      <Text>Nature</Text>
+      <Text>setting</Text>
     </View>
   )
 }

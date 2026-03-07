@@ -1,6 +1,6 @@
 import { images } from "../../constants/images.js";
+import ImagesRenderer from "../../components/ImagesRenderer.jsx";
 import ImageCard from "../../components/ImageCard.jsx";
-import CustomButton from "../../components/CustomButton.jsx";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 
@@ -16,74 +16,34 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-const Home = () => {
-  const [selectedImage, setSelectedImage] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+const Tab = createMaterialTopTabNavigator();
 
-  const handleShow = (img) => {
-    // console.log("image pressed", img);
-    setSelectedImage(img);
-    setShowModal(true);
-  };
-
+function MyTabs() {
   return (
-    <ScrollView contentContainerClassName="p-4 flex-row flex-wrap gap-4 items-center justify-center">
+    <Tab.Navigator>
+      <Tab.Screen name="for you" component={HomeScreen} />
+      <Tab.Screen name="Liked" component={LikedScreen} />
+    </Tab.Navigator>
+  );
+}
+
+const LikedScreen = () => {
+  return (
+    <View>
+      <ImagesRenderer images={images} />
+    </View>
+  );
+};
+
+const HomeScreen = () => {
+  return (
+    <ScrollView contentContainerClassName="flex-row flex-wrap gap-4 items-center justify-center">
       {/* ===All the images== */}
-      <FlatList
-        data={images}
-        numColumns={2}
-        className="gap-4"
-        keyExtractor={(item, i) => i}
-        renderItem={({ item }) => (
-          <ImageCard item={item} handleShow={handleShow} />
-        )}
-      />
-
-      {/* ====Modal=== */}
-      <Modal
-        visible={showModal}
-        presentationStyle="pageSheet"
-        animationType="slide"
-      >
-        {/* Header  */}
-        <View className="">
-          <TouchableOpacity onPress={() => setShowModal(false)} className="">
-            <FontAwesome
-              name="close"
-              color={"black"}
-              className="m-5"
-              size={20}
-            />
-          </TouchableOpacity>
-        </View>
-
-        {isLoading && (
-          <View className="flex-[4] items-center justify-center">
-            <ActivityIndicator size={"large"} />
-          </View>
-        )}
-
-        <Image
-          source={selectedImage}
-          style={{ flex: 4 }}
-          resizeMode="cover"
-          className="h-full w-full"
-          onLoadStart={() => setIsLoading(true)}
-          onLoadEnd={() => setIsLoading(false)}
-        />
-
-        <View className="flex-[1]">
-          <TouchableOpacity className="items-center justify-center">
-            <Text className="p-4 font-semibold text-white m-3  rounded-md bg-black">
-              Get Wallpaper
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+      <ImagesRenderer images={images} />
     </ScrollView>
   );
 };
 
-export default Home;
+export default MyTabs;

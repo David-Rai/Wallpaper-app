@@ -1,10 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
+import { Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, Image } from "react-native";
 import { Heart, Download } from "lucide-react-native";
 
 export default function ImageCard({ item, handleShow }) {
+  const handleDownload = (img) => {
+    console.log("Download this ", img);
+    Alert.alert("Downloading this image ",img)
+  };
+
   return (
     <Pressable
       onPress={() => handleShow(item)}
@@ -20,12 +26,14 @@ export default function ImageCard({ item, handleShow }) {
         color={"white"}
         name="heart-o"
         size={24}
+        // onPress={}
       />
       <FontAwesome
         className="absolute bottom-0 right-0 m-2"
         color={"white"}
         name="download"
         size={24}
+        onPress={() => handleDownload(item)}
       />
     </Pressable>
   );

@@ -15,7 +15,7 @@ export default function _layout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "For you",
+          title: "Home",
           tabBarIcon: ({ color }) => (
             <FontAwesome name="home" size={30} color={color} />
           ),
@@ -31,9 +31,9 @@ export default function _layout() {
         }}
       />
       <Tabs.Screen
-        name="account/index"
+        name="setting"
         options={{
-          title: "Account",
+          title: "Setting",
           tabBarIcon: ({ color }) => (
             <FontAwesome name="user" size={30} color={color} />
           ),

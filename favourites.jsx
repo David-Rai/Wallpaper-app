@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Space() {
+export default function favourites() {
   return (
     <View>
-      <Text>Space</Text>
+      <Text>favourites</Text>
     </View>
   )
 }
