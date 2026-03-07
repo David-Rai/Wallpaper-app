@@ -1,6 +1,7 @@
 import { images } from "../../constants/images.js";
 import ImagesRenderer from "../../components/ImagesRenderer.jsx";
 import ImageCard from "../../components/ImageCard.jsx";
+import { useTheme } from "../../context/themeProvider.jsx";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 
@@ -21,6 +22,8 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 const Tab = createMaterialTopTabNavigator();
 
 function MyTabs() {
+  const {colors,isDark} = useTheme();
+
   return (
     <Tab.Navigator>
       <Tab.Screen name="for you" component={HomeScreen} />
@@ -39,10 +42,10 @@ const LikedScreen = () => {
 
 const HomeScreen = () => {
   return (
-    <ScrollView contentContainerClassName="flex-row flex-wrap gap-4 items-center justify-center">
+    <View contentContainerClassName="flex-row flex-wrap gap-4 items-center justify-center">
       {/* ===All the images== */}
       <ImagesRenderer images={images} />
-    </ScrollView>
+    </View>
   );
 };
 

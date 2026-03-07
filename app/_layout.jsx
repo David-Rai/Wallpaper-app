@@ -1,4 +1,5 @@
 import React from "react";
+import { ThemeProvider } from "../context/themeProvider";
 import "../global.css";
 import { Slot } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
@@ -11,8 +12,10 @@ export default function layout() {
   return (
     <SafeAreaProvider>
       <SafeAreaView className="flex-1">
-        <StatusBar style="light"/>
-        <Stack screenOptions={{headerShown:false}}></Stack>
+        <StatusBar style="light" />
+        <ThemeProvider>
+          <Stack screenOptions={{ headerShown: false }}></Stack>
+        </ThemeProvider>
       </SafeAreaView>
     </SafeAreaProvider>
   );

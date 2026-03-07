@@ -1,15 +1,22 @@
 import React from "react";
+import { useTheme } from "../../context/themeProvider";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Tabs } from "expo-router";
 
 export default function _layout() {
+  const { colors, isDark } = useTheme();
+  console.log("theme colors", colors.background);
+
   return (
     <Tabs
       screenOptions={{
+        tabBarActiveTintColor: colors.primary,
         headerShown: false,
-        tabBarActiveTintColor: "#ccc",
+        tabBarStyle: {
+          backgroundColor: colors.background,
+        },
       }}
     >
       <Tabs.Screen
