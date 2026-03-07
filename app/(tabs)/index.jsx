@@ -1,7 +1,10 @@
 import { images } from "../../constants/images.js";
 import CustomButton from "../../components/CustomButton.jsx";
+import { FontAwesome } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
+
 import {
+  ActivityIndicator,
   View,
   ScrollView,
   Text,
@@ -17,13 +20,14 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShow = (img) => {
-    console.log("image pressed");
+    // console.log("image pressed", img);
     setSelectedImage(img);
     setShowModal(true);
   };
 
   return (
     <ScrollView contentContainerClassName="p-4 flex-row flex-wrap gap-4 items-center justify-center">
+      {/* ===All the images== */}
       {images.map((img, index) => (
         <Pressable
           key={index}
@@ -37,18 +41,27 @@ const Home = () => {
           />
         </Pressable>
       ))}
+
+      {/* ====Modal=== */}
       <Modal
         visible={showModal}
         presentationStyle="pageSheet"
         animationType="slide"
       >
-        <TouchableOpacity onPress={() => setShowModal(false)}>
-          <Text className="p-4 bg-purple-500 text-white m-3">Close</Text>
-        </TouchableOpacity>
-        <Image source={selectedImage} style={{ height: 100, width: 100 }} />
-        <View>
-          <TouchableOpacity>
-            <Text>Download Image</Text>
+        {/* Header  */}
+        <View className="">
+          <TouchableOpacity onPress={() => setShowModal(false)} className="">
+              <FontAwesome name="close" color={"black"} className="m-5" size={20} />
+          </TouchableOpacity>
+        </View>
+
+        <Image source={selectedImage} style={{ flex: 4 }} />
+
+        <View className="flex-[1]">
+          <TouchableOpacity className="items-center justify-center">
+            <Text className="p-4 font-semibold text-white m-3  rounded-md bg-black">
+              Get Wallpaper
+            </Text>
           </TouchableOpacity>
         </View>
       </Modal>
