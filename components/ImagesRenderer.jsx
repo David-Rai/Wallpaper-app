@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
-
+import { Heart } from "lucide-react-native";
 import {
   ActivityIndicator,
   View,
@@ -44,9 +44,10 @@ export default function ImagesRenderer({ images }) {
         visible={showModal}
         presentationStyle="pageSheet"
         animationType="slide"
+        onRequestClose={() => setShowModal(false)}
       >
         {/* Header  */}
-        <View className="">
+        <View className="flex-row justify-between">
           <TouchableOpacity onPress={() => setShowModal(false)} className="">
             <FontAwesome
               name="close"
@@ -55,6 +56,13 @@ export default function ImagesRenderer({ images }) {
               size={20}
             />
           </TouchableOpacity>
+
+          <FontAwesome
+            name="heart-o"
+            color={"black"}
+            className="m-5"
+            size={20}
+          />
         </View>
 
         {isLoading && (
