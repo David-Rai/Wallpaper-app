@@ -11,7 +11,7 @@ export default function layout() {
   return (
     <SafeAreaProvider>
       <SafeAreaView className="flex-1">
-        {/* <StatusBar style="light"/> */}
+        <StatusBar style="light"/>
         <Stack screenOptions={{headerShown:false}}></Stack>
       </SafeAreaView>
     </SafeAreaProvider>
