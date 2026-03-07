@@ -1,4 +1,5 @@
 import { images } from "../../constants/images.js";
+import ImageCard from "../../components/ImageCard.jsx";
 import CustomButton from "../../components/CustomButton.jsx";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
@@ -13,6 +14,7 @@ import {
   Modal,
   Pressable,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 
 const Home = () => {
@@ -28,19 +30,15 @@ const Home = () => {
   return (
     <ScrollView contentContainerClassName="p-4 flex-row flex-wrap gap-4 items-center justify-center">
       {/* ===All the images== */}
-      {images.map((img, index) => (
-        <Pressable
-          key={index}
-          onPress={() => handleShow(img)}
-          className="w-[48%] h-[220px] rounded-xl overflow-hidden bg-gray-200 active:opacity-80"
-        >
-          <Image
-            source={img}
-            className="w-full h-full object-cover"
-            resizeMode="cover"
-          />
-        </Pressable>
-      ))}
+      <FlatList
+        data={images}
+        numColumns={2}
+        className="gap-4"
+        keyExtractor={(item, i) => i}
+        renderItem={({ item }) => (
+          <ImageCard item={item} handleShow={handleShow} />
+        )}
+      />
 
       {/* ====Modal=== */}
       <Modal
@@ -51,11 +49,20 @@ const Home = () => {
         {/* Header  */}
         <View className="">
           <TouchableOpacity onPress={() => setShowModal(false)} className="">
-              <FontAwesome name="close" color={"black"} className="m-5" size={20} />
+            <FontAwesome
+              name="close"
+              color={"black"}
+              className="m-5"
+              size={20}
+            />
           </TouchableOpacity>
         </View>
 
-        <Image source={selectedImage} style={{ flex: 4 }} />
+        <Image
+          source={selectedImage}
+          style={{ flex: 4 }}
+          resizeMode="cover h-full w-full"
+        />
 
         <View className="flex-[1]">
           <TouchableOpacity className="items-center justify-center">
