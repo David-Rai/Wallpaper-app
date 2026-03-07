@@ -20,6 +20,7 @@ import {
 const Home = () => {
   const [selectedImage, setSelectedImage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleShow = (img) => {
     // console.log("image pressed", img);
@@ -58,10 +59,19 @@ const Home = () => {
           </TouchableOpacity>
         </View>
 
+        {isLoading && (
+          <View className="flex-[4] items-center justify-center">
+            <ActivityIndicator size={"large"} />
+          </View>
+        )}
+
         <Image
           source={selectedImage}
           style={{ flex: 4 }}
-          resizeMode="cover h-full w-full"
+          resizeMode="cover"
+          className="h-full w-full"
+          onLoadStart={() => setIsLoading(true)}
+          onLoadEnd={() => setIsLoading(false)}
         />
 
         <View className="flex-[1]">
