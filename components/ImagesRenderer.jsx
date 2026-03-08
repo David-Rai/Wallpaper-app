@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Text,
   Button,
+  Alert,
   Image,
   Modal,
   Pressable,
@@ -16,17 +17,53 @@ import {
   FlatList,
 } from "react-native";
 import ImageCard from "./ImageCard";
+import * as MediaLibrary from "expo-media-library";
+import * as FileSystem from "expo-file-system";
+import { Directory, File, Paths } from "expo-file-system";
 
 export default function ImagesRenderer({ images }) {
   const [selectedImage, setSelectedImage] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const { colors, isDark } = useTheme();
+  const [isLoading, setIsLoading] = useState(false);
+  const [permissionResponse, requestPermission] = MediaLibrary.usePermissions();
 
   const handleShow = (img) => {
-    // console.log("image pressed", img);
     setSelectedImage(img);
     setShowModal(true);
+  };
+
+  //Getting the save permissions
+  const handleDownload = async () => {
+    try {
+      if (!selectedImage) {
+        Alert.alert("No image selected", "Please select an image first.");
+        return;
+      }
+
+      // Request permission if not granted
+      let permission = await requestPermission();
+
+      if (permission.status !== "granted") {
+        Alert.alert(
+          "Permission required",
+          "Cannot save image without photo permission.",
+        );
+        return; // Stop if permission denied
+      }
+
+      // Save image
+      const { uri } = selectedImage;
+      const fileName = new Date().getTime(); // Extract file name from URL
+      const destination = new File(`${Paths.cacheDirectory}${fileName}`);
+      const result = await File.downloadFileAsync(uri, destination);
+
+      await MediaLibrary.createAssetAsync(result.uri);
+
+      Alert.alert("Success", "Image saved successfully!");
+    } catch (err) {
+      Alert.alert("Error", err.message || "Something went wrong!");
+    }
   };
 
   return (
@@ -87,7 +124,10 @@ export default function ImagesRenderer({ images }) {
           />
 
           <View className="flex-[1]">
-            <TouchableOpacity className="items-center justify-center">
+            <TouchableOpacity
+              className="items-center justify-center"
+              onPress={handleDownload}
+            >
               <Text
                 className="p-4 font-semibold m-3  rounded-md"
                 style={{

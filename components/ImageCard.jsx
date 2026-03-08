@@ -6,11 +6,6 @@ import { Pressable, Image } from "react-native";
 // import { Heart, Download } from "lucide-react-native";
 
 export default function ImageCard({ item, handleShow }) {
-  const handleDownload = (img) => {
-    console.log("Download this ", img);
-    Alert.alert("Downloading this image ",img)
-  };
-
   return (
     <Pressable
       onPress={() => handleShow(item)}

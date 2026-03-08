@@ -1,6 +1,5 @@
 import { images } from "../../constants/images.js";
 import ImagesRenderer from "../../components/ImagesRenderer.jsx";
-import ImageCard from "../../components/ImageCard.jsx";
 import { useTheme } from "../../context/themeProvider.jsx";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
