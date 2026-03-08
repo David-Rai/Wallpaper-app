@@ -18,7 +18,7 @@ import {
 } from "react-native";
 import ImageCard from "./ImageCard";
 import * as MediaLibrary from "expo-media-library";
-import * as FileSystem from "expo-file-system";
+import { downloadFile } from "expo-file-system";
 import { Directory, File, Paths } from "expo-file-system";
 
 export default function ImagesRenderer({ images }) {
@@ -53,11 +53,15 @@ export default function ImagesRenderer({ images }) {
       }
 
       // Save image
-      const { uri } = selectedImage;
-      const fileName = new Date().getTime(); // Extract file name from URL
-      const destination = new File(`${Paths.cacheDirectory}${fileName}`);
-      const result = await File.downloadFileAsync(uri, destination);
+      const fileName = `${Date.now()}.jpg`;
+      const destination = new File(Paths.cache, fileName);
+      // const result = await File.downloadFileAsync(uri, destination);
 
+      const result = await File.downloadFileAsync(
+        "https://cataas.com/cat",
+        destination,
+      );
+      
       await MediaLibrary.createAssetAsync(result.uri);
 
       Alert.alert("Success", "Image saved successfully!");
