@@ -7,15 +7,19 @@ import { Tabs } from "expo-router";
 
 export default function _layout() {
   const { colors, isDark } = useTheme();
-  console.log("theme colors", colors.background);
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
         headerShown: false,
+        tabBarIconStyle: {
+          color: "red",
+        },
         tabBarStyle: {
-          backgroundColor: colors.background,
+          borderTopWidth:0,
+          height: 60,
+          backgroundColor: colors.secondary,
         },
       }}
     >

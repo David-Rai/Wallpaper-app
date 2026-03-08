@@ -1,14 +1,17 @@
-export const colorsSet = {
-  primary: "#5C7AFF",
+// const primary = "#FFBD00";
+const primary = "#FFBD00";
 
+export const colorsSet = {
   dark: {
-    background: "black",
-    primary: "#5C7AFF",
+    secondary: "#252525",
+    background: "#141412",
+    primary:primary,
     text: "white",
   },
   light: {
     background: "white",
     text: "black",
-    primary: "#5C7AFF",
+    primary:primary,
+    secondary:"#ccc"
   },
 };

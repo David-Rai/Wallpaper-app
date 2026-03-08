@@ -1,14 +1,26 @@
 import { StyleSheet, Text, View } from "react-native";
 import ImagesRenderer from "../../components/ImagesRenderer";
 import React from "react";
+import { useTheme } from "../../context/themeProvider";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { images } from "../../constants/images";
 
 const Tab = createMaterialTopTabNavigator();
 
 function MyTabs() {
+  const { colors, isDark } = useTheme();
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarLabelStyle: { color: colors.text },
+        tabBarIndicatorStyle: {
+          borderBottomWidth: 2,
+          borderBottomColor: colors.primary,
+        },
+        tabBarStyle: { backgroundColor: colors.secondary },
+      }}
+    >
       <Tab.Screen name="Anime" component={AnimeScreen} />
       <Tab.Screen name="Nature" component={NatureScreen} />
     </Tab.Navigator>

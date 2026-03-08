@@ -22,10 +22,19 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 const Tab = createMaterialTopTabNavigator();
 
 function MyTabs() {
-  const {colors,isDark} = useTheme();
+  const { colors, isDark } = useTheme();
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarLabelStyle: { color: colors.text },
+        tabBarIndicatorStyle: {
+          borderBottomWidth: 2,
+          borderBottomColor: colors.primary,
+        },
+        tabBarStyle: { backgroundColor: colors.secondary },
+      }}
+    >
       <Tab.Screen name="for you" component={HomeScreen} />
       <Tab.Screen name="Liked" component={LikedScreen} />
     </Tab.Navigator>
