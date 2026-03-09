@@ -17,7 +17,7 @@ export default function _layout() {
           color: "red",
         },
         tabBarStyle: {
-          borderTopWidth:0,
+          borderTopWidth: 0,
           height: 60,
           backgroundColor: colors.secondary,
         },
@@ -32,7 +32,7 @@ export default function _layout() {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="explore"
         options={{
           title: "Explore",
@@ -40,7 +40,7 @@ export default function _layout() {
             <FontAwesome name="search" size={30} color={color} />
           ),
         }}
-      />
+      /> */}
       <Tabs.Screen
         name="setting"
         options={{
