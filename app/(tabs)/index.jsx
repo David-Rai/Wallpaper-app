@@ -34,7 +34,7 @@ function MyTabs() {
         tabBarStyle: { backgroundColor: colors.secondary },
       }}
     >
-      <Tab.Screen name="for you" component={HomeScreen} />
+      <Tab.Screen name="For you" component={HomeScreen} />
       <Tab.Screen name="Liked" component={LikedScreen} />
     </Tab.Navigator>
   );

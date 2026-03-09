@@ -81,8 +81,8 @@ export default function ImagesRenderer({ images }) {
         renderItem={({ item }) => (
           <ImageCard item={item} handleShow={handleShow} />
         )}
-        initialNumToRender={10} 
-        maxToRenderPerBatch={10} 
+        initialNumToRender={10}
+        maxToRenderPerBatch={10}
         windowSize={21}
       />
 
@@ -117,7 +117,7 @@ export default function ImagesRenderer({ images }) {
           </View>
 
           {isLoading && (
-            <View className="flex-[4] items-center justify-center">
+            <View className="absolute items-center justify-center top-0 right-0 w-full h-full">
               <ActivityIndicator size={"large"} />
             </View>
           )}
