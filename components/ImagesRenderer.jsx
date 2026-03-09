@@ -1,4 +1,5 @@
 import { FontAwesome } from "@expo/vector-icons";
+import { Asset } from "expo-asset";
 import { useState, useEffect } from "react";
 import { useTheme } from "../context/themeProvider";
 import { Heart } from "lucide-react-native";
@@ -18,7 +19,6 @@ import {
 } from "react-native";
 import ImageCard from "./ImageCard";
 import * as MediaLibrary from "expo-media-library";
-import { downloadFile } from "expo-file-system";
 import { Directory, File, Paths } from "expo-file-system";
 
 export default function ImagesRenderer({ images }) {
@@ -55,13 +55,14 @@ export default function ImagesRenderer({ images }) {
       // Save image
       const fileName = `${Date.now()}.jpg`;
       const destination = new File(Paths.cache, fileName);
-      // const result = await File.downloadFileAsync(uri, destination);
 
       const result = await File.downloadFileAsync(
-        "https://cataas.com/cat",
+        // "https://cataas.com/cat",
+        // asset.uri,
+        selectedImage,
         destination,
       );
-      
+
       await MediaLibrary.createAssetAsync(result.uri);
 
       Alert.alert("Success", "Image saved successfully!");
@@ -119,7 +120,7 @@ export default function ImagesRenderer({ images }) {
           )}
 
           <Image
-            source={selectedImage}
+            source={{ uri: selectedImage }}
             style={{ flex: 4 }}
             resizeMode="cover"
             className="h-full w-full rounded-xl"

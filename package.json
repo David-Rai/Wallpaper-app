@@ -13,6 +13,7 @@
     "@react-navigation/material-top-tabs": "^7.4.18",
     "babel-preset-expo": "~54.0.10",
     "expo": "~54.0.33",
+    "expo-asset": "~12.0.12",
     "expo-constants": "~18.0.13",
     "expo-file-system": "~19.0.21",
     "expo-linking": "~8.0.11",

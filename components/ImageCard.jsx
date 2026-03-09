@@ -12,7 +12,7 @@ export default function ImageCard({ item, handleShow }) {
       className="w-[48%] h-[220] rounded-xl ml-2 mt-2 overflow-hidden bg-gray-200 active:opacity-80"
     >
       <Image
-        source={item}
+        source={{ uri: item }}
         className="w-full h-full object-cover"
         resizeMode="cover"
       />
