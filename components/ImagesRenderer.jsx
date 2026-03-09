@@ -81,6 +81,9 @@ export default function ImagesRenderer({ images }) {
         renderItem={({ item }) => (
           <ImageCard item={item} handleShow={handleShow} />
         )}
+        initialNumToRender={10} 
+        maxToRenderPerBatch={10} 
+        windowSize={21}
       />
 
       {/* ====Modal=== */}
