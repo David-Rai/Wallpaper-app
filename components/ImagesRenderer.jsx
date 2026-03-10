@@ -72,6 +72,10 @@ export default function ImagesRenderer({ images }) {
     }
   };
 
+  const checkExist = liked.some((l) => l === selectedImage)
+    ? "heart"
+    : "heart-o";
+
   return (
     <View style={{ color: colors.text, backgroundColor: colors.background }}>
       <FlatList
@@ -113,7 +117,7 @@ export default function ImagesRenderer({ images }) {
             {/* like wallpaper */}
             <FontAwesome
               onPress={() => addLiked(selectedImage)}
-              name="heart-o"
+              name={checkExist}
               color={colors.text}
               className="m-5"
               size={20}
