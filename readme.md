@@ -23,7 +23,7 @@ Wallz is a React Native app built with Expo that allows users to browse, view, a
 
 ## Screenshots
 
-<img src="./screenshots/s4.jpeg" width="300" height="400" >
+<img src="./screenshots/s4.jpeg" width="300" height="1280" >
 
 (More APP UI)[./screenshots]
 
