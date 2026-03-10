@@ -21,7 +21,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.david_rai.wallz"
     },
     "web": {
       "bundler": "metro",
@@ -30,6 +31,13 @@
     "plugins": [
       "expo-router",
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "dbc660e2-a7bd-4271-b8c1-957bf3e3cda0"
+      }
+    },
+    "owner": "david_rai"
   }
 }
