@@ -1,21 +1,8 @@
 import { images } from "../../constants/images.js";
 import ImagesRenderer from "../../components/ImagesRenderer.jsx";
 import { useTheme } from "../../context/themeProvider.jsx";
-import { FontAwesome } from "@expo/vector-icons";
-import { useState, useEffect } from "react";
-
-import {
-  ActivityIndicator,
-  View,
-  ScrollView,
-  Text,
-  Button,
-  Image,
-  Modal,
-  Pressable,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { useLikedStore } from "../../context/liked.js";
+import { ActivityIndicator, View, Text } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 const Tab = createMaterialTopTabNavigator();
@@ -41,9 +28,14 @@ function MyTabs() {
 }
 
 const LikedScreen = () => {
+  const { liked } = useLikedStore();
   return (
     <View>
-      <ImagesRenderer images={images} />
+      {liked.length > 0 ? (
+        <ImagesRenderer images={liked} />
+      ) : (
+        <Text>No liked wallpapers</Text>
+      )}
     </View>
   );
 };

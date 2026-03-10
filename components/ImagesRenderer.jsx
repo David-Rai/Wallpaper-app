@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
-import { Asset } from "expo-asset";
 import { useState, useEffect } from "react";
+import { useLikedStore } from "../context/liked";
 import { useTheme } from "../context/themeProvider";
 import { Heart } from "lucide-react-native";
 import {
@@ -24,6 +24,7 @@ import { Directory, File, Paths } from "expo-file-system";
 export default function ImagesRenderer({ images }) {
   const [selectedImage, setSelectedImage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const { liked, addLiked } = useLikedStore();
   const { colors, isDark } = useTheme();
   const [isLoading, setIsLoading] = useState(false);
   const [permissionResponse, requestPermission] = MediaLibrary.usePermissions();
@@ -100,6 +101,7 @@ export default function ImagesRenderer({ images }) {
           {/* Header  */}
           <View className="flex-row justify-between">
             <TouchableOpacity onPress={() => setShowModal(false)} className="">
+              {/* close modal */}
               <FontAwesome
                 name="close"
                 color={colors.text}
@@ -108,7 +110,9 @@ export default function ImagesRenderer({ images }) {
               />
             </TouchableOpacity>
 
+            {/* like wallpaper */}
             <FontAwesome
+              onPress={() => addLiked(selectedImage)}
               name="heart-o"
               color={colors.text}
               className="m-5"
