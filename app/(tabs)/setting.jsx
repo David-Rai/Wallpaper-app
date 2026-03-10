@@ -15,17 +15,20 @@ export default function Setting() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      
       {/* Header */}
       <Text style={[styles.heading, { color: colors.text }]}>Settings</Text>
 
       {/* Divider */}
-      <View style={[styles.divider, { backgroundColor: colors.text, opacity: 0.1 }]} />
+      <View
+        style={[styles.divider, { backgroundColor: colors.text, opacity: 0.1 }]}
+      />
 
       {/* Theme Row */}
       <View style={[styles.row, { borderBottomColor: colors.text + "18" }]}>
         <View style={styles.rowLeft}>
-          <Text style={[styles.rowLabel, { color: colors.text }]}>Dark Mode</Text>
+          <Text style={[styles.rowLabel, { color: colors.text }]}>
+            Light Mode
+          </Text>
           <Text style={[styles.rowSub, { color: colors.text, opacity: 0.45 }]}>
             {isEnabled ? "On" : "Off"}
           </Text>
@@ -38,7 +41,6 @@ export default function Setting() {
           ios_backgroundColor="#D1D1D6"
         />
       </View>
-
     </View>
   );
 }
