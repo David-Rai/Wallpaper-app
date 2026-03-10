@@ -29,12 +29,18 @@ function MyTabs() {
 
 const LikedScreen = () => {
   const { liked } = useLikedStore();
+  const { colors } = useTheme();
+  
   return (
-    <View>
+    <View className="flex-1" style={{ backgroundColor: colors.background }}>
       {liked.length > 0 ? (
         <ImagesRenderer images={liked} />
       ) : (
-        <Text>No liked wallpapers</Text>
+        <View className=" flex-1 items-center justify-start pt-10">
+          <Text className="text-2xl" style={{ color: colors.text }}>
+            No liked wallpapers
+          </Text>
+        </View>
       )}
     </View>
   );
