@@ -11,7 +11,7 @@ Wallz is a React Native app built with Expo that allows users to browse, view, a
 - NativeWind
 - Expo vector icons
 
-(Get App here)[https://expo.dev/accounts/david_rai/projects/wallz/builds/0f32e774-8ef6-4493-a310-c8d5272609ee]
+[Get App here](https://expo.dev/accounts/david_rai/projects/wallz/builds/0f32e774-8ef6-4493-a310-c8d5272609ee)
 
 ## Features
 
@@ -27,7 +27,7 @@ Wallz is a React Native app built with Expo that allows users to browse, view, a
 
 <img src="./screenshots/s4.jpeg" width="300" height="1280" >
 
-(More APP UI)[/screenshots]
+[More APP UI](./screenshots)
 
 ## Installation
 
